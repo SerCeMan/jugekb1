@@ -1,0 +1,45 @@
+
+contribute(currentType(subType(groovy.lang.Script))) {
+    property name: 'user', 
+             type: 'ru.serce.sample.User', 
+             doc:  'A user! May be Bender???'
+             
+    property name: 'timeService',
+             type: 'ru.serce.sample.TimeService',
+             doc:  'You can control the time!'
+             
+    property name: 'logger',
+             type: 'ru.serce.sample.Logger',
+             doc:  'Just log it!'
+}
+
+
+contribute(currentType(subType(Number))) {
+    property name: 'km', type:'Distance.KM', doc: 'kilometer'
+    property name: 'm' , type:'Distance.M' , doc: 'meter'
+    property name: 'cm', type:'Distance.CM', doc: 'centimeter'
+}
+
+
+// ко всем в папке
+contribute(sourceFolderOfCurrentType("src/main/groovy")) {
+    delegatesTo List
+}
+
+// ко всем static полям
+contribute(fields(isStatic())) {
+    
+}
+
+// к аннотированным элементам 
+contribute(annotatedBy("java.lang.Deprecated")) {
+    method name:     'recreate',
+           type:     'java.lang.Number',
+           isStatic: true,
+           doc:      'Simple method'
+}
+
+// к классу Bar с методом методу foo
+contribute(currentType(name("ru.serce.sample.Bar") & methods("foo"))) {
+    
+}

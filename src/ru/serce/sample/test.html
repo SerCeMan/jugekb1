@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+	<textarea></textarea><br/>
+	<button>Save</button>
+</body>
+
+<script>
+var editor = CodeMirror.fromTextArea(
+		document.getElementById("code"), {
+			lineNumbers : true,
+			matchBrackets : true,
+			styleActiveLine : true,
+			lineWrapping : true,
+			highlightSelectionMatches : true,
+			autoCloseBrackets : true,
+			mode : "text/x-groovy"
+		}
+);
+</script>
+
+</html>
